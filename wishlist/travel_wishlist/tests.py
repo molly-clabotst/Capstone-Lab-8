@@ -47,3 +47,25 @@ class TestVisitedList(TestCase):
         self.assertContains(response, 'San Francisco')
         self.assertContains(response, 'Moab')
 
+class TestAddNewPlace(TestCase):
+
+    def test_add_new_unvisited_place_to_wishlist(self):
+        
+        response = self.client.post(reverse('place_list'), {'name':'Tokyo', 'visited': False }, follow=True)
+
+        # Check correct template was used
+        self.assertTemplateUsed(response, 'travel_wishlist/wishlist.html')
+
+        # What data was used to populate the template?
+        response_places = response.context['places']
+        # Should be 1 item
+        self.assertEqual(len(response_places), 1)
+        tokyo_response = response_places[0]
+
+        # Expect this data to be in the databse. Use get()to get data with
+        # the values expected. Will throw an exception if no data, or more than
+        # one row, matches. Remember throwing an exception will cause this test to fail
+        tokyo_in_database = Place.objects.get(name='Tokyo', visited = False)
+
+        # Is the data used to render the template, the same as the data in the database?
+        self.assertEqual(tokyo_response, tokyo_in_database)
