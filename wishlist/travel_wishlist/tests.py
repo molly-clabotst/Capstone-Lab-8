@@ -46,3 +46,4 @@ class TestVisitedList(TestCase):
         self.assertNotContains(response,'New York')
         self.assertContains(response, 'San Francisco')
         self.assertContains(response, 'Moab')
+
