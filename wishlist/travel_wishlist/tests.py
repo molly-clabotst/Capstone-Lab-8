@@ -69,3 +69,28 @@ class TestAddNewPlace(TestCase):
 
         # Is the data used to render the template, the same as the data in the database?
         self.assertEqual(tokyo_response, tokyo_in_database)
+
+class TestVisitedPlace(TestCase):
+    
+    fixtures = ['test_places']
+
+    def test_visit_place(self):
+
+        # visit place pk = 2, New York
+        response = self.client.post(reverse('place_was_visited', args=(2,) ), follow=True)
+
+        # Check correct template was used
+        self.assertTemplateUsed(response, 'travel_wishlist/wishlist.html')
+
+        # No New York in the response
+        self.assertNotContains(response, 'New York')
+
+        # Is New York visited?
+        new_york = Place.objects.get(pk=2)
+        self.assertTrue(new_york.visited)
+
+    def test_visit_non_existent_place(self):
+
+        # visit place pk = 200, does not exist
+        response = self.client.post(reverse('place_was_visited', args=(200,) ), follow=True)
+        self.assertEqual(response.status_code, 404) 

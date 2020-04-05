@@ -6,7 +6,7 @@ from .forms import NewPlaceForm
 
 def place_was_visited(request, place_pk):
     if request.method == 'POST':
-        place = Place.objects.get_object_or_404(pk=place_pk)
+        place = get_object_or_404(Place, pk=place_pk)
         place.visited = True
         place.save()
 
