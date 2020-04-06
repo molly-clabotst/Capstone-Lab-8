@@ -1,25 +1,39 @@
-span.place-name{
+/* Styles are organized as they appear on the pages
+ top to bottom with respect to grouping */
+
+label{
     display: inline-block;
-    width: 70%;
+    padding-right: 8px;
 }
 form.visited-form{
     display: inline;
 }
 div.wishlist-place{
-    margin: 20px;
+    margin-left: 70px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
-label{
-    padding-right: 8px;
+span.place-name{
+    display: inline-block;
+    width: 70%;
+    width: 100px;
+}
+button{
+    border-radius: 5px;
+}
+button.visit-button{
+    display: inline-block;
+    margin-left: 142px;    
+}
+ul{
+    list-style-type: none;
+    margin-left: 45px;
+    background-color: #2c8898;
+    width: 100px;
+    color: white;
+    border-radius: 5px;
+    margin-top: 10px;
 }
 a.nav-link{
     padding-right: 10px;
-}
-
-#add-new-place {
-    background-color: green;
-    border: green;
-}
-
-button{
-    background-color: red;
 }
