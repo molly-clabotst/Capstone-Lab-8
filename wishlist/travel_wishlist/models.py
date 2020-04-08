@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -11,4 +12,6 @@ class Place(models.Model):
     photo = models.ImageField(upload_to='use_images/', blank=True, null=True)
 
     def __str__(self):
-        return f'{self.name}, visited? {self.visited} on {self.date_visited}\nPhoto {photo_str}'
+        photo_str = self.photo.url if self.photo else 'no photo'
+        notes_str = self.notes[100:] if self.notes else 'no notes'
+        return f'{self.name}, visited? {self.visited} on {self.date_visited}. Notes: {notes_str}\nPhoto {photo_str}'
