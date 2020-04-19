@@ -8,7 +8,7 @@ class Place(models.Model):
     visited = models.BooleanField(default=False)
     user = models.ForeignKey('auth.User', null=False, on_delete=models.CASCADE)
     notes = models.TextField(blank=True, null=True)
-    date_visited = models.DateField(blank=True, null=False)
+    date_visited = models.DateField(blank=True, null=True)
     photo = models.ImageField(upload_to='use_images/', blank=True, null=True)
 
     def __str__(self):

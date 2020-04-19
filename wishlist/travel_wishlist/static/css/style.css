@@ -28,7 +28,7 @@ button.visit-button{
 ul{
     list-style-type: none;
     margin-left: 45px;
-    background-color: #2c8898;
+    background-color: rgb(202, 240, 240);
     width: 100px;
     color: white;
     border-radius: 5px;
@@ -36,4 +36,15 @@ ul{
 }
 a.nav-link{
     padding-right: 10px;
+}
+.delete{
+    background-color: tomato;
+    border-color: pink;
+
+}
+#site-header {
+    background: url('../images/taylor_simpson(2).jpg') 0 0 repeat-x;
+    color: white;
+    padding: 40px 0 40px 0;
+    text-align: center;
 }
