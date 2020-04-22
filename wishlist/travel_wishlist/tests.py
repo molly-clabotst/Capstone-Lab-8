@@ -206,6 +206,9 @@ class TestPlaceDetail(TestCase):
 
         updated_place_4 = Place.objects.get(pk=4)
 
+        # Making sure the notes are added, the right place is updated,
+        # the right template is updated and that what is in the response
+        # is in the template
         self.assertEqual('yay', updated_place_4.notes)
         self.assertEqual(response.context['place'], updated_place_4)
         self.assertTemplateUsed(response, 'travel_wishlist/place_details.html')
@@ -220,7 +223,10 @@ class TestPlaceDetail(TestCase):
 
         updated_place_4 = Place.objects.get(pk=4)
 
-        self.assertEqual(updated_place_4.date_visited.isoformat(), date_visited)   # .isoformat is YYYY-MM-DD
+        # Making sure the date is in the right format, the place is created, 
+        # the right template is used and that what is on the template is what 
+        # is in the response.
+        self.assertEqual(updated_place_4.date_visited.isoformat(), date_visited) 
         self.assertEqual(response.context['place'], updated_place_4)
         self.assertTemplateUsed(response, 'travel_wishlist/place_details.html')
         self.assertContains(response, date_visited)
@@ -264,6 +270,8 @@ class TestImageUpload(TestCase):
                 img_file_name = os.path.basename(img_file_path)
                 expected_uploaded_file_path = os.path.join(self.MEDIA_ROOT, 'use_images', img_file_name)
 
+                # Making sure the photo and file path exist. Making sure that it is the 
+                # same as what is expected.
                 self.assertTrue(os.path.exists(expected_uploaded_file_path))
                 self.assertIsNotNone(place_1.photo)
                 self.assertTrue(filecmp.cmp( img_file_path,  expected_uploaded_file_path ))

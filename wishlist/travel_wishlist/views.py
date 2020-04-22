@@ -38,6 +38,7 @@ def place_was_visited(request, place_pk):
         else:
             return HttpResponseForbidden()
 
+    # Making new call
     return redirect('place_list')
 
 @login_required

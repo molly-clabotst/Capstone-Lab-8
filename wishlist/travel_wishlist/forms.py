@@ -7,6 +7,7 @@ class NewPlaceForm(forms.ModelForm):
         model = Place
         fields = ('name', 'visited')
 
+# Doesn't like class name repeated
 class DateInpu(forms.DateInput):
     input_type = 'date'
 
