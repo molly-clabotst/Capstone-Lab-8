@@ -252,6 +252,7 @@ class TestImageUpload(TestCase):
         
         img_file_path = self.create_temp_image_file()
 
+
         with self.settings(MEDIA_ROOT=self.MEDIA_ROOT):
         
             with open(img_file_path, 'rb') as img_file:
@@ -261,7 +262,7 @@ class TestImageUpload(TestCase):
 
                 place_1 = Place.objects.get(pk=1)
                 img_file_name = os.path.basename(img_file_path)
-                expected_uploaded_file_path = os.path.join(self.MEDIA_ROOT, 'user_images', img_file_name)
+                expected_uploaded_file_path = os.path.join(self.MEDIA_ROOT, 'use_images', img_file_name)
 
                 self.assertTrue(os.path.exists(expected_uploaded_file_path))
                 self.assertIsNotNone(place_1.photo)
