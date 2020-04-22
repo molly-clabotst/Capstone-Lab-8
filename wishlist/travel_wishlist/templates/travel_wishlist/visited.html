@@ -3,20 +3,20 @@
 
 <h1>Places You Have Visited</h1>
 
-{% if visited %}
-
-<ul>
+<div>
     {% for place in visited %}
         <li>
-            <a href="{% url 'place_details' place.pk %}">{{ place.name }}</a>
+            <span class="visited-list-place-name">
+                <a href="{% url 'place_details' place.pk %}">{{ place.name }}</a>
+            </span>
         </li>
+        
+
+    {% empty %}
+
+        <p>You have not visited any places yet.</p>
+
     {% endfor %}
-</ul>
-
-{% else %}
-
-    <p>You have not visited any places yet.</p>
-
-{% endif %}
+</div>
 
 {% endblock %}

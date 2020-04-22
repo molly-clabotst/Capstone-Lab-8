@@ -117,5 +117,12 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
+STATIC_ROOT = os.path.join(BASE_DIR, 'www', 'static')
 
 STATIC_URL = '/static/'
+
+# Media url, for user-creatd media - becomes part of tURL  when images are displayed
+MEDIA_URL = '/media/'
+
+# Where in the files sytem to save the user-uploaded files
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
